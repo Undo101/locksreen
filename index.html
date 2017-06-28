@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style lang="css"> 
+*{
+    margin: 0;
+    padding: 0;
+}
+html ,body{
+    height: 100%;
+    font-size: 12px;
+}
+.wraper{
+    height: 100%;
+}
+.background{
+    height: 100%;
+    background: url(./images/day.png) no-repeat;
+    background-size: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.time{
+    height: 8.333rem;
+    width: 15rem;
+    margin-top: 5.583333rem;
+    flex-direction: column;
+    display: flex;
+}
+.top,.down{
+    margin:auto;
+    display: flex;
+}
+.white{
+    color: white;
+    font-size: 5.25rem;
+    font-weight: 200;
+    width:fit-content;
+    width:-webkit-fit-content;
+    width:-moz-fit-content;
+    height: fit-content;
+    height:-webkit-fit-content;
+    height:-moz-fit-content; 
+}
+.small{
+    font-size: 1.25rem;
+    margin-bottom:1rem; 
+    margin-right: .7rem;
+}
+.slide:before{
+    position:absolute;
+    left: -2rem;
+    top:.5rem;
+    content: "";
+    height: 1.1rem;
+    width: 1.1rem;
+    border-top: 2px solid #fff;
+    border-right:  2px solid #fff;
+    transform: rotateZ(45deg)
+}
+.slide{
+    height: 2.7916666rem;
+    color: #fff;
+    font-size: 1.666rem;
+    /*margin-top: 30.70833rem;*/
+    top:40rem;
+    position: absolute;
+}
+.bottom{
+    height: 3rem;
+    width: 100%;
+    margin-bottom: 0rem;
+    display: flex;
+}
+.upglide{
+    height: 3rem;
+    width: 4rem;
+    background-color: blue;
+    background: url(./images/upglide.png) no-repeat;
+    margin-left: 45%;
+    background-position:0% 200%
+}
+.camero{
+    height: 3rem;
+    width: 4rem;
+    background: url(./images/camero.png) no-repeat;
+    margin-left: 25%;
+}
+</style>
+<body>
+<div class="wraper">
+    <div class="background">
+        <div class="time">
+            <div class="top">
+                <div class="white" id="time-hour"></div>
+                <span class="white">:</span>
+                <div class="white" id="time-min"></div>
+            </div>
+            <div class="down">
+                <div class="white small" id="time-week"></div>
+                <div class="white small" id="time-month"></div>
+                <div class="white small" id="time-date"></div>
+            </div>
+        </div>
+        <div class="slide">Slide to Unlock</div>
+        <div class="bottom">
+            <div class="upglide">
+                <a href="javascript"></a>
+            </div>
+            <div class="camero">
+                <a href="javascript" class="camero"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let bgImage = document.querySelector('.background')
+    const oHour =document.getElementById('time-hour')
+    const oMin = document.getElementById('time-min')
+    const oWeek = document.getElementById('time-week')
+    const oMonth =document.getElementById('time-month')
+    const oDate = document.getElementById('time-date')
+    const month_name = ['January','February','March','April','May','June','July','August','September','October','November','December']
+    const week_name = ['Sunday','monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+
+    let myDate = new Date()
+    let my_month =myDate.getMonth()
+    let  my_day =myDate.getDay();
+    let my_date = myDate.getDate()
+    let my_hour = myDate.getHours(); //获取当前小时数(0-23)
+    let my_minutes = myDate.getMinutes(); //获取当前分钟数(0-59)
+
+    oHour.innerHTML = my_hour
+    oMin.innerHTML = my_minutes
+    oDate.innerHTML =my_date
+    oMonth.innerHTML = month_name[my_month]
+    oWeek.innerHTML = week_name[my_day]
+
+    if( my_hour <7 || my_hour > 19) {
+            bgImage.style.background = "url(./images/night.png) no-repeat"
+    }
+
+</script>
+</body>
+</html>
+
+
